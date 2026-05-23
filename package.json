@@ -1,0 +1,23 @@
+{
+  "name": "admia",
+  "version": "1.0.0",
+  "description": "Votre assistant administratif intelligent",
+  "main": "src/html/index.html",
+  "scripts": {
+    "start": "open src/html/index.html",
+    "dev": "python3 -m http.server 8000 --directory .",
+    "build": "echo 'Build completed'"
+  },
+  "keywords": [
+    "admin",
+    "assistant",
+    "chatbot",
+    "administrative"
+  ],
+  "author": "morodesmoro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morodesmoro/admia.git"
+  }
+}

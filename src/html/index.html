@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admia - Votre Assistant Administratif Intelligent</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <!-- ECRAN INSCRIPTION -->
+    <div id="register-screen" class="auth-container">
+        <div class="logo-star"></div>
+        <h2>Rejoindre Admia</h2>
+        <p>Votre gestionnaire administratif automatisé</p>
+        <div class="input-group">
+            <label>Adresse E-mail</label>
+            <input type="email" id="reg-email" placeholder="exemple@domaine.com" required>
+            <div id="reg-error" class="error-msg">Cet e-mail est déjà utilisé.</div>
+        </div>
+        <div class="input-group">
+            <label>Mot de passe</label>
+            <input type="password" id="reg-password" placeholder="••••••••" required>
+        </div>
+        <button class="btn-submit" onclick="handleRegister()">Créer mon compte</button>
+        <div class="auth-toggle">Déjà un compte ? <span onclick="switchAuthScreen('login')">Se connecter</span></div>
+    </div>
+
+    <!-- ECRAN CONNEXION -->
+    <div id="login-screen" class="auth-container auth-hidden">
+        <div class="logo-star"></div>
+        <h2>Connexion à Admia</h2>
+        <p>Ravi de vous revoir</p>
+        <div class="input-group">
+            <label>Adresse E-mail</label>
+            <input type="email" id="login-email" placeholder="exemple@domaine.com" required>
+        </div>
+        <div class="input-group">
+            <label>Mot de passe</label>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+            <div id="login-error" class="error-msg">Identifiants incorrects.</div>
+        </div>
+        <button class="btn-submit" onclick="handleLogin()">Se connecter</button>
+        <div class="auth-toggle">Nouveau sur Admia ? <span onclick="switchAuthScreen('register')">Créer un compte</span></div>
+    </div>
+
+    <!-- INTERFACE APPLICATIVE PRINCIPALE -->
+    <div id="app-interface" class="chat-interface">
+        <!-- Barre latérale -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-star"></div>
+                <h1>Admia</h1>
+            </div>
+            <div class="user-profile">
+                <div class="user-info" id="user-display-email">user@mail.com</div>
+                <button class="btn-logout" onclick="handleLogout()">Quitter</button>
+            </div>
+        </div>
+
+        <!-- Zone d'échange -->
+        <div class="main-chat">
+            <div class="chat-messages" id="chat-box">
+                <div class="message bot">
+                    Bonjour ! Je suis **Admia**, votre assistante experte en gestion administrative. Que puis-je rédiger, analyser ou organiser pour vous aujourd'hui ?
+                </div>
+            </div>
+
+            <!-- Loader étoile tournante -->
+            <div class="loading-container" id="bot-loader">
+                <div class="spinning-star"></div>
+            </div>
+
+            <!-- Entrée utilisateur -->
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="Demandez une lettre, un contrat, une synthèse..." onkeypress="checkEnter(event)">
+                    <button class="btn-send" onclick="sendMessage()">➔</button>
+                </div>
+            </div>
+
+            <!-- Paywall Modale -->
+            <div class="modal-overlay" id="paywall-modal">
+                <div class="modal-content">
+                    <h3>Limite d'utilisation atteinte</h3>
+                    <p>Vous avez utilisé vos 8 demandes administratives gratuites. Passez au forfait Admia Pro pour débloquer l'assistant en illimité et accélérer toutes vos démarches.</p>
+                    <div class="price-tag">10€ <span>/ mois</span></div>
+                    <a href="https://www.paypal.com/ncp/payment/VV5WKFXWMJ6QN" target="_blank" class="btn-paypal">Devenir Pro avec PayPal</a>
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">Ou attendez la réinitialisation de vos accès :</p>
+                    <div class="countdown-timer" id="timer-display">00:00:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
